@@ -1,0 +1,8 @@
+Snake/CMakeLists.txt.user
+build/
+.vs/
+Snake/Images/
+Snake/Sounds/
+x64/Release/RunGame.exe
+x64/Release/RunGame.pdb
+Snake/x64/
