@@ -6,8 +6,10 @@ Engine::Engine()
     srand(time(NULL));
     screenX = sf::VideoMode::getDesktopMode().width;
     screenY = sf::VideoMode::getDesktopMode().height;
-    window = std::make_unique<sf::RenderWindow>(sf::VideoMode(screenX, screenY), "SFML window");
-    window->setFramerateLimit(30);
+
+    window = std::make_unique<sf::RenderWindow>(sf::VideoMode(screenX, screenY), "Snake", sf::Style::Fullscreen);
+    //window->setFramerateLimit(120);
+    window->setMouseCursorVisible(false);
 
     font.loadFromFile("images/18949.ttf");
     text.setFont(font);
@@ -360,7 +362,7 @@ void Engine::draw()
 
 void Engine::run()
 {
-    window = std::make_unique<sf::RenderWindow>(sf::VideoMode(screenX, screenY), "SFML window");
+    //window = std::make_unique<sf::RenderWindow>(sf::VideoMode(screenX, screenY), "SFML window");
 
     while (window->isOpen())
     {
@@ -393,6 +395,12 @@ void Engine::run()
         else
         {
             P2SnakeSpeed = 1;
+        }
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+        {
+            window->close();
+            exit(0);
         }
 
         if (isP1Moving && !snakeP1.empty())
